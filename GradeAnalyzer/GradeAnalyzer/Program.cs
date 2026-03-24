@@ -79,7 +79,7 @@ namespace GradeAnalyzer
                 }
                 else
                 {
-                    Console.WriteLine("⚠️ Неверный формат! Введите число");
+                    Console.WriteLine("⚠️ Неверный формат! Введите число.");
                 }
             }
 
