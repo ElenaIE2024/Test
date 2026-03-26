@@ -22,4 +22,12 @@ jobs:
     - name: Build
       run: msbuild GradeAnalyzer/GradeAnalyzer.sln /p:Configuration=Release /t:Rebuild
 
+    - name: Publish
+      run: msbuild GradeAnalyzer.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishDir=publish/
+
+    - name: Upload Published Files
+      uses: actions/upload-artifact@v4
+      with:
+        name: GradeAnalyzer-Published
+        path: publish/
   
