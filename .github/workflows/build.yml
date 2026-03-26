@@ -17,9 +17,9 @@ jobs:
       uses: microsoft/setup-msbuild@v2
       
     - name: Restore NuGet packages
-      run: nuget restore GradeAnalyzer.sln
+      run: nuget restore GradeAnalyzer/GradeAnalyzer.sln
 
     - name: Build
-      run: msbuild GradeAnalyzer.sln /p:Configuration=Release /t:Rebuild
+      run: msbuild GradeAnalyzer/GradeAnalyzer.sln /p:Configuration=Release /t:Rebuild
 
   
