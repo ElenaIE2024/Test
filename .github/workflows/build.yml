@@ -8,20 +8,18 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '4.7.x'  # Укажите вашу версию .NET
-
-    - name: Restore dependencies
-      run: dotnet restore
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+      
+    - name: Restore NuGet packages
+      run: nuget restore GradeAnalyzer.sln
 
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: msbuild GradeAnalyzer.sln /p:Configuration=Release /t:Rebuild
 
   
