@@ -93,7 +93,7 @@ namespace GradeAnalyzer
         {
             if (grades.Count == 0) return 0;
             return grades.Average();
-        } 
+        }
 
         /// <summary>
         /// Расчёт уровня обученности (процент оценок выше 2)
@@ -102,7 +102,8 @@ namespace GradeAnalyzer
         {
             if (grades.Count == 0) return 0;
             int countAbove2 = grades.Count(g => g > 2);
-            return countAbove2 / grades.Count * 100;
+            // ИСПРАВЛЕНИЕ: добавлено явное приведение к double, чтобы избежать целочисленного деления
+            return (double)countAbove2 / grades.Count * 100;
         }
 
         /// <summary>
@@ -111,7 +112,15 @@ namespace GradeAnalyzer
         static double CalculateSuccessLevel(List<int> grades)
         {
             if (grades.Count == 0) return 0;
-            int countAbove3 = grades.Count(g => g >= 3);
+
+            //  ОШИБКА БЫЛА ЗДЕСЬ 
+            // Было: int countAbove3 = grades.Count(g => g >= 3);
+            // Проблема: условие g >= 3 учитывало тройки, но по определению уровень успешности (>3) - это процент оценок ВЫШЕ 3
+            // То есть тройки НЕ должны входить в расчёт уровня успешности
+
+            // ИСПРАВЛЕНИЕ: изменено условие с >= на >
+            int countAbove3 = grades.Count(g => g > 3); // Теперь считаются только оценки 4 и 5
+
             return (double)countAbove3 / grades.Count * 100;
         }
     }
