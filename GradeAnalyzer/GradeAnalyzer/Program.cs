@@ -15,7 +15,7 @@ namespace GradeAnalyzer
 
             Console.WriteLine("=== Анализ успеваемости группы студентов ===\n");
 
-            // 1. Ввод оценок
+            // 1. Ввод оценок blabla
             List<int> grades = InputGrades();
 
             if (grades.Count == 0)
