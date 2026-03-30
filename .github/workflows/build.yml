@@ -1,0 +1,33 @@
+name: Build
+
+on:
+  push:
+    branches: [ team06 ]
+  pull_request:
+    branches: [ team06 ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+      
+    - name: Restore NuGet packages
+      run: nuget restore GradeAnalyzer/GradeAnalyzer.sln
+
+    - name: Build
+      run: msbuild GradeAnalyzer/GradeAnalyzer.sln /p:Configuration=Release /t:Rebuild
+
+    - name: Publish
+      run: msbuild GradeAnalyzer/GradeAnalyzer.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishDir=publish/
+
+    - name: Upload Published Files
+      uses: actions/upload-artifact@v4
+      with:
+        name: GradeAnalyzer-Published
+        path: GradeAnalyzer/GradeAnalyzer/bin/Release/
+  
