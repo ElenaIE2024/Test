@@ -102,7 +102,7 @@ namespace GradeAnalyzer
         {
             if (grades.Count == 0) return 0;
             int countAbove2 = grades.Count(g => g > 2);
-            return countAbove2 / grades.Count * 100;
+            return (double)countAbove2 / grades.Count * 100;
         }
 
         /// <summary>
