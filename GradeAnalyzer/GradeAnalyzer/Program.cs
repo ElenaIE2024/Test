@@ -93,7 +93,7 @@ namespace GradeAnalyzer
         {
             if (grades.Count == 0) return 0;
             return grades.Average();
-        } 
+        }
 
         /// <summary>
         /// Расчёт уровня обученности (процент оценок выше 2)
@@ -102,7 +102,7 @@ namespace GradeAnalyzer
         {
             if (grades.Count == 0) return 0;
             int countAbove2 = grades.Count(g => g > 2);
-            return countAbove2 / grades.Count * 100;
+            return (double)countAbove2 / grades.Count * 100;  // Приведение к double
         }
 
         /// <summary>
