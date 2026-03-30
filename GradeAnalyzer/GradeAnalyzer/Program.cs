@@ -99,11 +99,11 @@ namespace GradeAnalyzer
         /// Расчёт уровня обученности (процент оценок выше 2)
         /// </summary>
         static double CalculateLearningLevel(List<int> grades)
-        {
-            if (grades.Count == 0) return 0;
-            int countAbove2 = grades.Count(g => g > 2);
-            return countAbove2 / grades.Count * 100;
-        }
+	{
+    if (grades.Count == 0) return 0;
+    int countAbove2 = grades.Count(g => g > 2);
+    return (double)countAbove2 / grades.Count * 100;
+	}
 
         /// <summary>
         /// Расчёт уровня успешности (процент оценок выше 3)
@@ -114,5 +114,6 @@ namespace GradeAnalyzer
             int countAbove3 = grades.Count(g => g >= 3);
             return (double)countAbove3 / grades.Count * 100;
         }
+
     }
 }
