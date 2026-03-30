@@ -111,7 +111,7 @@ namespace GradeAnalyzer
         static double CalculateSuccessLevel(List<int> grades)
         {
             if (grades.Count == 0) return 0;
-            int countAbove3 = grades.Count(g => g >= 3);
+            int countAbove3 = grades.Count(g => g > 3);
             return (double)countAbove3 / grades.Count * 100;
         }
     }
