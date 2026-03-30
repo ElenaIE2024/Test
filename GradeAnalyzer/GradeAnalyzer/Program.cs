@@ -20,7 +20,7 @@ namespace GradeAnalyzer
 
             if (grades.Count == 0)
             {
-                Console.WriteLine("❌ Оценки не введены. Завершение программы.");
+                Console.WriteLine(" Оценки не введены. Завершение программы.");
                 return;
             }
 
