@@ -116,3 +116,4 @@ namespace GradeAnalyzer
         }
     }
 }
+//Студент 1
