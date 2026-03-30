@@ -116,3 +116,4 @@ namespace GradeAnalyzer
         }
     }
 }
+//Участник 1
