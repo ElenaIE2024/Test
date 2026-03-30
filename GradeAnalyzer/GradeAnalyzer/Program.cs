@@ -102,16 +102,16 @@ namespace GradeAnalyzer
         {
             if (grades.Count == 0) return 0;
             int countAbove2 = grades.Count(g => g > 2);
-            return countAbove2 / grades.Count * 100;
+            return (double)countAbove2 / grades.Count * 100;
         }
 
         /// <summary>
-        /// Расчёт уровня успешности (процент оценок выше 4 и 5)
+        /// Расчёт уровня успешности (процент оценок выше 3)
         /// </summary>
         static double CalculateSuccessLevel(List<int> grades)
         {
             if (grades.Count == 0) return 0;
-            int countAbove3 = grades.Count(g => g >= 4 || g >= 5);
+            int countAbove3 = grades.Count(g => g >= 3);
             return (double)countAbove3 / grades.Count * 100;
         }
     }
